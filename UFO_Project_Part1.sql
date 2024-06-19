@@ -17,14 +17,12 @@ CHANGE COLUMN `date posted` `date_posted` TEXT NULL DEFAULT NULL ;
 -- 2. Remove Duplicates
 -- 3. Standardize the data and fix errors
 -- 		a. Change rows where duration_hours_min is nonsensical and make it uniform 
--- 		b. Rename countries that don’t make sense (and make the countries full names instead of abbreviation)
--- 		c. Cange date columns from text to date
--- 		d. Clean non alphabetic characters from text columns
+-- 		b. Rename countries that don’t make sense (and make the countries full names instead of abbreviations)
+-- 		c. Change date columns from text to date
+-- 		d. Clean non-alphabetic characters from text columns
 -- 		e. Convert all blanks to nulls 
 -- 4. Populate null values
 -- 5. Drop columns and rows that are not needed 
--- 6. Add columns for exploration (continent column)
--- 7. I will do some breif exploration here just to have more information and context for part 2 of this project
 
 -- ------------------------------------------------------------------------------------------------------
 
@@ -33,7 +31,7 @@ CHANGE COLUMN `date posted` `date_posted` TEXT NULL DEFAULT NULL ;
 
 CREATE TABLE sightings_staging_dup
 LIKE sightings;
--- "dup" at the end just indiccates that this table still contains duplicates, I will create a sightings_staging table that does
+-- "dup" at the end just indicates that this table still contains duplicates, I will create a sightings_staging table that does
 -- not have duplicates in step 2
 
 INSERT sightings_staging_dup
@@ -41,7 +39,7 @@ SELECT * FROM sightings;
 
 -- ------------------------------------------------------------------------------------------------------
 -- 2. Remove Duplicates
--- Firstly, I must check for duplicates
+-- First, I must check for duplicates
 
 WITH duplicates AS
 (
@@ -107,7 +105,7 @@ FROM sightings_staging
 WHERE (duration_hours_min = "" AND duration_seconds != 0) OR (duration_hours_min != "" AND duration_seconds = 0);
 
 -- we can see the duration_hours_min column has a lot of nonsense entries (some of the entries are not useable (random sentences (like "my house" or "flash"), or large range of time)).
--- we want replace these random sentences with NULL
+-- we want to replace these random sentences with NULL
 
 UPDATE sightings_staging
 SET duration_hours_min = 
@@ -117,9 +115,9 @@ SET duration_hours_min =
     END
 ;
 -- I will leave duration_hours_min as text type because we have duration_seconds which seems to be a generally more accurate way to get information about the duration of the event
--- duration_hours_min will be there to provide extra information incase it is needed during data exploration
+-- duration_hours_min will be there to provide extra information in case it is needed during data exploration
 
--- b. Rename countries that don't make sense (and make the countries full names instead of abbreviation) ------------------------------------------------------------------------------------------------------
+-- b. Rename countries that don't make sense (and make the countries full names instead of abbreviations) ------------------------------------------------------------------------------------------------------
 
 -- We want to see distinct countries
 SELECT DISTINCT country FROM sightings_staging;
@@ -205,7 +203,7 @@ SET
 ALTER TABLE `ufo_sightings`.`sightings_staging` 
 CHANGE COLUMN `datetime` `datetime` DATETIME NULL DEFAULT NULL ;
 
--- Now I will work on date_posted column. Thankfully this coulumn also looks to be uniform and there are no weirdly formatted rows. 
+-- Now I will work on date_posted column. Thankfully this column also looks to be uniform and there are no weirdly formatted rows. 
 -- But notice with this column it is only dates and no time
 
 UPDATE sightings_staging
@@ -215,7 +213,7 @@ SET
 ALTER TABLE `ufo_sightings`.`sightings_staging` 
 CHANGE COLUMN `date_posted` `date_posted` DATE NULL DEFAULT NULL ;
 
--- d. Clean non alphabetic characters from text columns --------------------------------------------------------------------------------------------------
+-- d. Clean non-alphabetic characters from text columns --------------------------------------------------------------------------------------------------
 -- I noticed in the city and comments columns there are some rows with non alphabetic characters (for example, maplewood&#44).
 -- I am going to clean these rows so they are only alphabetic 
 
@@ -255,7 +253,7 @@ FROM sightings_staging;
 # NA_city | NA_state | NA_country| NA_shape | NA_duration_seconds | NA_comments | NA_latitude | NA_longitude
 # 65 	  | 7407	 | 12362     | 9239     | 7027                | 39          | 1494        | 1494
 
--- Now I will change all blank entries to NULL (note for shape and city columns we have the entries "unkown" which I will also change to NULL)
+-- Now I will change all blank entries to NULL (note for shape and city columns we have the entries "unknown" which I will also change to NULL)
 -- We will also use trim() on some of the text columns for cleanliness and uniformity
 
 UPDATE sightings_staging
@@ -273,16 +271,16 @@ SET
 
 -- 4. Populate null values
 -- There are a few columns where it is possible to get missing information if some of the other columns are filled 
--- For example, if we have state, city, then we might be able to get country
+-- For example, if we have state, and city, then we might be able to get country
 -- There are two cases I will focus on:
 -- 		a. Have (latitude, longitude) and one of (city, state) I can get country
--- 		b. Have (city, state) I can get (counytry, latitude, longitude)
+-- 		b. Have (city, state) I can get (country, latitude, longitude)
 -- Note I am not using latitude and longitude to get information on city or state because this will not always be accurate
 
 -- a. Have (latitude, longitude, city, state) and Get country --------------------------------------------------------------------------------------------------
--- To get an estimate on the range of closeness for latiitude and longitude, I googled distance between 1 degree on latitude = 69 miles and I checked the width of the countries I have
--- United States, England, Wales, Canada, Australia, Ireland, Scotland, Germany, United kingdom and the smallest width is 140 miles (Wales)
--- So an I will set the range to 1.25 because the chances of a different country with the same city or state name being that close is slim
+-- To get an estimate on the range of closeness for latitude and longitude, I googled distance between 1 degree on latitude = 69 miles and I checked the width of the countries I have
+-- United States, England, Wales, Canada, Australia, Ireland, Scotland, Germany, United Kingdom and the smallest width is 140 miles (Wales)
+-- So I will set the range to 1.25 because the chances of a different country with the same city or state name being that close is slim
 
 SELECT s1.city, s1.country, s1.state, s1.longitude, s1.latitude,
 	   s2.city, s2.country, s2.state, s2.longitude, s2.latitude
@@ -324,7 +322,7 @@ WHERE (s1.country IS NULL AND s2.country IS NOT NULL) OR (s1.latitude IS NULL AN
 SELECT * FROM sightings_staging WHERE (latitude IS NULL AND longitude IS NOT NULL) or (longitude IS NULL AND latitude IS NOT NULL);
 
 -- There are no instances like this so now when I update, I will update both in (when possible)
--- Note: latitude and longitude can slightly vary within cities and countries, but i will update so the previously null rows have an approximate value for latitude and longitude
+-- Note: latitude and longitude can vary slightly within cities and countries, but I will update so the previously null rows have an approximate value for latitude and longitude
 -- Now I will update country, latitude, and longitude when possible
 
 UPDATE sightings_staging s1
@@ -358,17 +356,17 @@ FROM sightings_staging;
 #    NA_country   | NA_latitude | NA_longitude
 #    11,654       | 1366        | 1366
 
--- This is an improvement. Also, conisdering that the database is so large (88,000 rows approximatley) this a pretty negligible amount of NA values.
+-- This is an improvement. Also, considering that the database is so large (88,000 rows approximately) this is a pretty negligible amount of NA values.
 -- There are also cases where it is ok to have NULL values. For example:
---   state: because becuase there are countries like Germany, Australia and the UK which don't have "states"
+--   state: because because there are countries like Germany, Australia, and the UK that don't have "states"
 -- 	 country, city: because some of these sightings may have been in the middle of the ocean ie. no country or city (or state)
--- Some of there rows where certain columns are blank might have useuful information in different columns. What is important depends on the data exploration questions
+-- Some of their rows where certain columns are blank might have useful information in different columns. What is important depends on the data exploration questions
 
 -- ------------------------------------------------------------------------------------------------------
 
 -- 5. Drop rows and columns
--- Taking into cnsideration my specific goals and ideas for this database, I have deemed the following columns unnecessary:
--- 		duration_hours_min, duration_seconds: I am not looking in to how long the sightings lasted
+-- Taking into consideration my specific goals and ideas for this database, I have deemed the following columns unnecessary:
+-- 		duration_hours_min, duration_seconds: I am not looking into how long the sightings lasted
 -- Although some of the columns I am deleting are ones I have cleaned, this is ok because we have the scrubbed version of them in case my goals and questions change and I ever do need them
 
 ALTER TABLE `ufo_sightings`.`sightings_staging` 
@@ -376,7 +374,7 @@ DROP COLUMN `duration_hours_min`,
 DROP COLUMN `duration_seconds`;
 
 -- Now I want to check which rows I can delete
--- The main location columns that are important for my investiation are latitude and longitude (as city, state and country can be derived from these)
+-- The main location columns that are important for my investigation are latitude and longitude (as city, state and country can be derived from these)
 -- I also want to perform a text analysis so I want there to be no nulls in the shape comments columns
 -- I also do not want any nulls in the date posted columns
 
@@ -409,7 +407,7 @@ SELECT count(*) FROM sightings_staging;
 
 -- There are 74,731 rows
 
--- I will just double check how many NULLs are in each column
+-- I will just double-check how many NULLs are in each column
 
 SELECT 
   sum(CASE WHEN city IS NULL THEN 1 ELSE 0 END) NA_city,
@@ -421,14 +419,4 @@ SELECT
   sum(CASE WHEN longitude IS NULL THEN 1 ELSE 0 END) NA_longitude
 FROM sightings_staging;
 
--- there are only NULL values in the city and state and country columns as desired
-
--- 7. Breif exploration ------------------------------------------------------------------------------------------------------
--- I want to see how many countries have distinct states
-select country, count(distinct state) from sightings_staging group by country;
-
--- See all the shapes that UFO's have been described as
-select distinct shape from sightings_staging;
-
--- How many ufo sightings are in each country
-select country, count(*) from sightings_staging group by country;
+-- there are only NULL values in the city, state and country columns as desired
