@@ -1,1 +1,1 @@
-All my projects in my data analyst portfolio :)
+All the projects in my data analyst portfolio :)
