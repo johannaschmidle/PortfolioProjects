@@ -8,7 +8,7 @@ This project is inspired by the project that sparked my interest in data analysi
 In this rendition of the project, I explored a UFO Sightings database and re-cleaned and re-analyzed it with my new skills.    
 
 ## Task List
-1. Data Cleaning in SQL ([UFO_Project_Part1.sql]([UFO_Project_Part1.sql](https://github.com/johannaschmidle/UFO-Project/blob/main/UFO_Project_Part1.sql))
+1. Data Cleaning in SQL ([UFO_Project_Part1.sql](https://github.com/johannaschmidle/UFO-Project/blob/main/UFO_Project_Part1.sql))
 2. Data Exploration and Modeling Done in Python ([UFO_Project_Part2_Python.ipynb](https://github.com/johannaschmidle/UFO-Project/blob/main/UFO_Project_Part2_Python.ipynb))
 
 ## Things you can find in my project:
