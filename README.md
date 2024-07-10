@@ -1,6 +1,10 @@
 # UFO Sightings Analysis
 The Relationship Between UFOs, Location, Time, and Human Emotion
 
+<p align="center">
+    <img src="UFOProjImage.jpg" alt="Snippets from project" width="900">
+</p>
+
 ## Motivation
 **Goal:** I want to learn more about how factors like time, location, and human emotion affect the rate at which UFO sightings are reported.
 
@@ -20,13 +24,6 @@ In this rendition of the project, I explored a UFO Sightings database and re-cle
 - K-means clustering
 - Density calculation using Gaussian Kernel Density Estimation (KDE)
 - Sentiment and emotion analysis (tokenization, removal of stopwords, speech tagging, stemming, lemmatization)
-
-<p align="center">
-    <img src="UFOProjImage.jpg" alt="Snippets from project" width="900">
-</p>
-
-## Data
-The dataset used in this project is available publicly on Kaggle: [https://www.kaggle.com/datasets/NUFORC/ufo-sightings](https://www.kaggle.com/datasets/NUFORC/ufo-sightings)
 
 ## Summary of Insights:
 The full summary can be found at the bottom of my [project file](https://github.com/johannaschmidle/UFO-Project/blob/main/UFO_Project_Part2_Python.ipynb). 
@@ -102,6 +99,9 @@ The full summary can be found at the bottom of my [project file](https://github.
 - Common colors: orange, white, red.
 - Sightings often occur at night.
 - UFOs can be large.
+  
+## Data
+The dataset used in this project is available publicly on Kaggle: [https://www.kaggle.com/datasets/NUFORC/ufo-sightings](https://www.kaggle.com/datasets/NUFORC/ufo-sightings)
 
 ## Technologies
 - SQL
