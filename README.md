@@ -3,7 +3,8 @@ The Relationship Between UFOs, Location, Time, and Human Emotion
 
 ## Motivation
 This project is inspired by the project that sparked my interest in data analysis. The original project was done in R and it remains my favourite school project to this day. My professor even used it (and still uses it) as an example of a good project when teaching this class.
-In this rendition of the project, I explored a UFO Sightings database and re-cleaned and re-analyzed it with my new skills. I want to learn more about how factors like time, location, and human emotion affect the rate at which UFO sightings are reported.
+In this rendition of the project, I explored a UFO Sightings database and re-cleaned and re-analyzed it with my new skills. 
+**Goal:** I want to learn more about how factors like time, location, and human emotion affect the rate at which UFO sightings are reported.
 
 ## Task List
 1. Data Cleaning in SQL 
