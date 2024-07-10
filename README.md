@@ -4,6 +4,10 @@ This project is inspired by the project that sparked my interest in data analysi
 In this rendition of the project, I explored a UFO Sightings database and re-cleaned and re-analyzed it with my new skills. This project has two parts:
 1. Data Cleaning in SQL 
 2. Data Exploration and Modeling Done in Python
+
+<p align="center">
+    <img src="UFOProjImage.jpg" alt="Snippets from project" width="900">
+</p>
    
 ## Things you can find in my project:
 - Analysis thinking and problem-solving
