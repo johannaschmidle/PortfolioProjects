@@ -7,8 +7,8 @@ In this rendition of the project, I explored a UFO Sightings database and re-cle
 **Goal:** I want to learn more about how factors like time, location, and human emotion affect the rate at which UFO sightings are reported.
 
 ## Task List
-1. Data Cleaning in SQL 
-2. Data Exploration and Modeling Done in Python
+1. Data Cleaning in SQL ([UFO_Project_Part1.sql]([UFO_Project_Part1.sql](https://github.com/johannaschmidle/UFO-Project/blob/main/UFO_Project_Part1.sql))
+2. Data Exploration and Modeling Done in Python ([UFO_Project_Part2_Python.ipynb](https://github.com/johannaschmidle/UFO-Project/blob/main/UFO_Project_Part2_Python.ipynb))
 
 ## Things you can find in my project:
 - Analysis thinking and problem-solving
@@ -94,8 +94,6 @@ The full summary can be found at the bottom of my project.
 - Sightings often occur at night.
 - UFOs can be large.
 
-
 ## Technologies
 - SQL
 - Python (Pandas, nltk, Seaborn, matplotlib)
-
