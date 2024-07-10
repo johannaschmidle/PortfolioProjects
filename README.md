@@ -29,7 +29,7 @@ In this rendition of the project, I explored a UFO Sightings database and re-cle
 The dataset used in this project is available publicly on Kaggle: [https://www.kaggle.com/datasets/NUFORC/ufo-sightings](https://www.kaggle.com/datasets/NUFORC/ufo-sightings)
 
 ## Summary of Insights:
-The full summary can be found at the bottom of my project. 
+The full summary can be found at the bottom of my ([project file](https://github.com/johannaschmidle/UFO-Project/blob/main/UFO_Project_Part2_Python.ipynb)). 
 ### Time
 #### Sightings and Reporting Over the Years 
 1. Over time there is an increase in UFO **sighting** rates, likely due to internet access, pop culture events, and conspiracy theories.
