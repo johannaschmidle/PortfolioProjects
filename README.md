@@ -6,10 +6,9 @@ The Relationship Between UFOs, Location, Time, and Human Emotion
 </p>
 
 ## Motivation
-**Goal:** I want to learn more about how factors like time, location, and human emotion affect the rate at which UFO sightings are reported.
-
 This project is inspired by the project that sparked my interest in data analysis. The original project was done in R and it remains my favourite school project to this day. My professor even used it (and still uses it) as an example of a good project when teaching this class.
 In this rendition of the project, I explored a UFO Sightings database and re-cleaned and re-analyzed it with my new skills.    
+**Goal:** I want to learn more about how factors like time, location, and human emotion affect the rate at which UFO sightings are reported.
 
 ## Task List
 1. Data Cleaning in SQL ([UFO_Project_Part1.sql](https://github.com/johannaschmidle/UFO-Project/blob/main/UFO_Project_Part1.sql))
@@ -99,7 +98,12 @@ The full summary can be found at the bottom of my [project file](https://github.
 - Common colors: orange, white, red.
 - Sightings often occur at night.
 - UFOs can be large.
-  
+
+## Recommendations and Next Steps
+- Investigate more detailed temporal patterns, such as sightings during specific holidays, weekends, or significant cultural events.
+- Implement machine learning models to predict the likelihood of sightings based on historical data and external factors.
+- Use clustering algorithms to identify and categorize different types of UFO sightings.
+
 ## Data
 The dataset used in this project is available publicly on Kaggle: [https://www.kaggle.com/datasets/NUFORC/ufo-sightings](https://www.kaggle.com/datasets/NUFORC/ufo-sightings)
 
